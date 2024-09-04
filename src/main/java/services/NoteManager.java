@@ -30,7 +30,7 @@ public class NoteManager {
         connection = DriverManager.getConnection("jdbc:h2:"+path);
         SQL = connection.createStatement();
         notebook = new ArrayList<>();
-
+        ReadNoteBase();
 
 
 
@@ -47,7 +47,27 @@ public class NoteManager {
         return instance;
     }
 
+    public void ReadNoteBase() throws SQLException {
 
+        ResultSet resultSet = SQL.executeQuery("SELECT * FROM notes");
+
+        while (resultSet.next()) {
+            Note note = new Note();
+            note.setId(resultSet.getInt("id"));
+            note.setNameNote(resultSet.getString("nameNote").trim());
+            note.setTextNote(resultSet.getString("textNote").trim());
+            note.setDtCreate(resultSet.getString("dtCreate"));
+            note.setDtChange(resultSet.getString("dtChange"));
+
+            if (!notebook.contains(note)) {
+                notebook.add(note);
+
+               /* resultSet.close();
+                statement.close();
+                connection.close();*/
+            }
+        }
+    }
 
 
 
