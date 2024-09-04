@@ -24,9 +24,6 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         // Применение форматирования к текущей дате и времени
         String dt = currentDateTime.format(formatter);
-        NoteManager x = new NoteManager();
-
-        System.out.println(x.getPath().toString());
 
         //SQL.execute("INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 2, 'Bye World' , '"+dt+"' , '"+dt+"' , 'Second'");
 

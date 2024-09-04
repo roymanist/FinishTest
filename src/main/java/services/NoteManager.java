@@ -9,14 +9,46 @@ import java.sql.Statement;
 import java.sql.*;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class NoteManager {
 
- private String relativePath = "src/main/resources/NoteDBase";
-    private Path path = Paths.get(relativePath).toAbsolutePath();
+    private static NoteManager instance;
+    private static final Object lock = new Object();/// не сильно понял этот локер. по теории он блочит создание дубля в многопоточности
 
-   /* private Connection connection = DriverManager.getConnection("jdbc:h2:"+path.getName(1));
-    private Statement SQL = connection.createStatement();
-*/
+
+    private Connection connection;
+    private Statement SQL;
+    private String relativePath = "src/main/resources/NoteDBase";
+    private Path path = Paths.get(relativePath).toAbsolutePath();
+    private List<Note> notebook;
+
+    private NoteManager() throws SQLException {
+        // connection = DriverManager.getConnection("jdbc:h2:E:/JAVA_LRN/II/PROJ/NEW-NOTE-V2/src/main/java/dbase/NoteDBase");
+        connection = DriverManager.getConnection("jdbc:h2:"+path);
+        SQL = connection.createStatement();
+        notebook = new ArrayList<>();
+
+
+
+
+    }//приватный конструктор
+
+    public static NoteManager getNoteData() throws SQLException {
+        if (instance == null) {
+            synchronized (lock) {
+                if (instance == null) {
+                    instance = new NoteManager();
+                }
+            }
+        }
+        return instance;
+    }
+
+
+
+
+
 }
