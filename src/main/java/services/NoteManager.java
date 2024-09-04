@@ -1,5 +1,6 @@
 package services;
 import lombok.Data;
+import services.interfaces.IReadNoteBase;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class NoteManager {
+public class NoteManager implements IReadNoteBase {
 
     private static NoteManager instance;
     private static final Object lock = new Object();/// не сильно понял этот локер. по теории он блочит создание дубля в многопоточности
@@ -24,6 +25,7 @@ public class NoteManager {
     private String relativePath = "src/main/resources/NoteDBase";
     private Path path = Paths.get(relativePath).toAbsolutePath();
     private List<Note> notebook;
+    private  ResultSet resultSet;
 
     private NoteManager() throws SQLException {
         // connection = DriverManager.getConnection("jdbc:h2:E:/JAVA_LRN/II/PROJ/NEW-NOTE-V2/src/main/java/dbase/NoteDBase");
@@ -31,9 +33,6 @@ public class NoteManager {
         SQL = connection.createStatement();
         notebook = new ArrayList<>();
         ReadNoteBase();
-
-
-
     }//приватный конструктор
 
     public static NoteManager getNoteData() throws SQLException {
@@ -49,7 +48,7 @@ public class NoteManager {
 
     public void ReadNoteBase() throws SQLException {
 
-        ResultSet resultSet = SQL.executeQuery("SELECT * FROM notes");
+        resultSet = SQL.executeQuery("SELECT * FROM notes");
 
         while (resultSet.next()) {
             Note note = new Note();
@@ -61,10 +60,6 @@ public class NoteManager {
 
             if (!notebook.contains(note)) {
                 notebook.add(note);
-
-               /* resultSet.close();
-                statement.close();
-                connection.close();*/
             }
         }
     }
