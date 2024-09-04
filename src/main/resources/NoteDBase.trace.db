@@ -1,0 +1,12 @@
+2024-09-04 18:26:26.436409+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World',2024-09-04 [*]18:26:26,2024-09-04 18:26:26'First'"
+Syntax error in SQL statement "INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World',2024-09-04 [*]18:26:26,2024-09-04 18:26:26'First'"; SQL statement:
+INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World',2024-09-04 18:26:26,2024-09-04 18:26:26'First' [42000-224]
+2024-09-04 18:26:53.911460+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World',2024-09-04 [*]18:26:53,2024-09-04 18:26:53,'First'"
+Syntax error in SQL statement "INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World',2024-09-04 [*]18:26:53,2024-09-04 18:26:53,'First'"; SQL statement:
+INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World',2024-09-04 18:26:53,2024-09-04 18:26:53,'First' [42000-224]
+2024-09-04 18:27:45.532836+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World' , 2024-09-04 [*]18:27:45 , 2024-09-04 18:27:45 , 'First'"
+Syntax error in SQL statement "INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World' , 2024-09-04 [*]18:27:45 , 2024-09-04 18:27:45 , 'First'"; SQL statement:
+INSERT INTO notes (id, textNote, dtCreate, dtChange, nameNote) SELECT 1, 'Hello World' , 2024-09-04 18:27:45 , 2024-09-04 18:27:45 , 'First' [42000-224]
