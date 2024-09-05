@@ -16,8 +16,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
+
+
+/*
         NoteManager manager = NoteManager.getNoteData();
-;
 
         for (int i = 0; i < manager.getNotebook().size(); i++) {
             System.out.println(manager.getNotebook().get(i).getId());
@@ -25,6 +27,6 @@ public class Main {
             System.out.println(manager.getNotebook().get(i).getTextNote());
             System.out.println(manager.getNotebook().get(i).getDtCreate());
             System.out.println(manager.getNotebook().get(i).getDtChange());
-        }
+        }*/
     }
 }
