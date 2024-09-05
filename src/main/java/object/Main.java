@@ -2,6 +2,7 @@ package object;
 
 import services.Note;
 import services.NoteManager;
+import services.interfaces.SomeClass;
 
 import java.net.URI;
 import java.nio.file.Path;
@@ -16,7 +17,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-
+        SomeClass x = new SomeClass();
+        x.getClass();
 
 /*
         NoteManager manager = NoteManager.getNoteData();
